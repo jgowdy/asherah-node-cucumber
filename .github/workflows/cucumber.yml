@@ -17,7 +17,9 @@ jobs:
     - name: Download Docker install script
       run: curl -fsSL https://get.docker.com -o get-docker.sh
     - name: Run Docker install script
-      run: sh get-docker.sh    
+      run: sh get-docker.sh
+    - name: Run Docker rootless
+      run: dockerd-rootless-setuptool.sh install
     - name: Build and push Docker images
       uses: docker/build-push-action@v2.9.0    
     - name: Install node packages
