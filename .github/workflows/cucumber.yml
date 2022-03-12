@@ -17,4 +17,4 @@ jobs:
     - name: Install node packages
       run: npm i
     - name: Run Cucumber
-      run: ./node_modules/.bin/cucumber-js features/test.feature
+      run: ./node_modules/.bin/cucumber-js features/
