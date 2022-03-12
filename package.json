@@ -9,10 +9,6 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "@cucumber/cucumber": "^7.3.2",
-        "asherah": "^1.0.39",
-        "fs": "^0.0.1-security",
-        "import-cwd": "^3.0.0"
+        "@cucumber/cucumber": "^7.3.2"
     }
-  }
-  
+}

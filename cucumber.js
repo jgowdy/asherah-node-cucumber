@@ -1,55 +1,18 @@
 "use strict";
 
-const importCwd = require('import-cwd')
-const { Given, When, Then } = importCwd('@cucumber/cucumber')
-const assert = require("assert");
-const asherah = require("asherah");
-const fs = require("fs");
+const { Given, When } = require('@cucumber/cucumber')
 
-const fileDirectory = "/tmp/";
-const fileName = "node_encrypted";
-
-let payloadString;
-let encryptedPayloadString;
-
-Given(/^I have "(.*)"$/, function (payload) {
-    payloadString = payload;
+Given('an empty todo list', function () {
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
 });
 
-When('I encrypt the data', function () {
-    const config = {
-        KMS: 'static',
-        Metastore: 'memory',
-        ServiceName: 'TestService',
-        ProductID: 'TestProduct',
-        Verbose: true,
-        EnableSessionCaching: true,
-        ExpireAfter: null,
-        CheckInterval: null,
-        ConnectionString: null,
-        ReplicaReadConsistency: null,
-        DynamoDBEndpoint: null,
-        DynamoDBRegion: null,
-        DynamoDBTableName: null,
-        SessionCacheMaxSize: null,
-        SessionCacheDuration: null,
-        RegionMap: null,
-        PreferredRegion: null,
-        EnableRegionSuffix: null
-    };
-    asherah.setup(config);
-    encryptedPayloadString = asherah.encrypt_string('partition', payloadString);
-    asherah.shutdown();
+When('I add the todo {string}', function (string) {
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
 });
 
-Then('I should get encrypted_data', function (_dataTable) {
-    const tempFile = fileDirectory + fileName;
-    if (fs.existsSync(tempFile)) {
-        fs.unlinkSync(tempFile);
-    }
-    fs.writeFileSync(tempFile, encryptedPayloadString);
-});
-
-Then('encrypted_data should not be equal to data', function (_dataTable) {
-    assert(payloadString, encryptedPayloadString);
+When('I remove the todo {string}', function (string) {
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
 });
