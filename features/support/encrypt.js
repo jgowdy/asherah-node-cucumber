@@ -11,6 +11,12 @@ const fileName = "node_encrypted";
 let payloadString;
 let encryptedPayloadString;
 
+var adoDatabaseName = process.env.TEST_DB_NAME;
+var adoUsername = process.env.TEST_DB_USER;
+var adoPassword = process.env.TEST_DB_PASSWORD;
+var adoPort = process.env.TEST_DB_PORT;
+var adoConnectionString = adoUsername+":"+adoPassword+"@tcp(localhost:"+adoPort+")/"+adoDatabaseName+"?tls=false";
+
 Given("I have {string}", async function (payload) {
     payloadString = payload;
 });
@@ -18,14 +24,14 @@ Given("I have {string}", async function (payload) {
 When('I encrypt the data', async function () {
     const config = {
         KMS: 'static',
-        Metastore: 'memory',
+        Metastore: 'rdbms',
         ServiceName: 'TestService',
         ProductID: 'TestProduct',
         Verbose: true,
         EnableSessionCaching: true,
         ExpireAfter: null,
         CheckInterval: null,
-        ConnectionString: null,
+        ConnectionString: adoConnectionString,
         ReplicaReadConsistency: null,
         DynamoDBEndpoint: null,
         DynamoDBRegion: null,
@@ -36,8 +42,8 @@ When('I encrypt the data', async function () {
         PreferredRegion: null,
         EnableRegionSuffix: null
     };
-    asherah.setup(config);
-    encryptedPayloadString = asherah.encrypt_string('partition', payloadString);
+    asherah.setup(config);    
+    encryptedPayloadString = Buffer.from(asherah.encrypt_string('partition', payloadString)).toString('base64');
     asherah.shutdown();
     return 'passed';
 });
@@ -55,25 +61,3 @@ Then('encrypted_data should not be equal to data', async function () {
     assert(payloadString, encryptedPayloadString);
     return 'passed';
 });
-
-Given('I have encrypted_data from {string}', async function (string) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-When('I decrypt the encrypted_data', async function () {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-Then('I should get decrypted_data', async function () {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-Then('decrypted_data should be equal to {string}', async function (string) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-

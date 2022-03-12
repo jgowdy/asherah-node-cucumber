@@ -8,6 +8,7 @@ Feature: Decrypt Data using RDBMS metastore and static KMS
     And decrypted_data should be equal to "<data>"
     Examples:
       | data                 | file_name              |
+      | mySuperSecretPayload | node_encrypted         |      
       | mySuperSecretPayload | java_encrypted         |
       | mySuperSecretPayload | csharp_encrypted       |
       | mySuperSecretPayload | go_encrypted           |
