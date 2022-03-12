@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  MYSQL_HOSTNAME: mysql
+  MYSQL_HOSTNAME: localhost
   MYSQL_DATABASE: testdb
   MYSQL_USERNAME: root
   MYSQL_PASSWORD: Password123

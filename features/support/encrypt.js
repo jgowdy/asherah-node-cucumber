@@ -11,10 +11,10 @@ const fileName = "node_encrypted";
 let payloadString;
 let encryptedPayloadString;
 
-var adoDatabaseName = process.env.TEST_DB_NAME;
-var adoUsername = process.env.TEST_DB_USER;
-var adoPassword = process.env.TEST_DB_PASSWORD;
-var adoPort = process.env.TEST_DB_PORT;
+var adoDatabaseName = process.env.MYSQL_DATABASE;
+var adoUsername = process.env.MYSQL_USERNAME;
+var adoPassword = process.env.MYSQL_PASSWORD;
+var adoPort = process.env.MYSQL_PORT;
 var adoConnectionString = adoUsername+":"+adoPassword+"@tcp(localhost:"+adoPort+")/"+adoDatabaseName+"?tls=false";
 
 Given("I have {string}", async function (payload) {
