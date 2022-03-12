@@ -4,14 +4,15 @@
     "description": "",
     "main": "cucumber.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "MIT",
     "dependencies": {
-      "@cucumber/cucumber": "^7.3.2",
-      "asherah": "^1.0.39",
-      "fs": "^0.0.1-security"
+        "@cucumber/cucumber": "^7.3.2",
+        "asherah": "^1.0.39",
+        "fs": "^0.0.1-security",
+        "import-cwd": "^3.0.0"
     }
   }
   

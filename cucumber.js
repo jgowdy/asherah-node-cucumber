@@ -1,6 +1,7 @@
 "use strict";
 
-const cucumber = require("@cucumber/cucumber");
+const importCwd = require('import-cwd')
+const { Given, When, Then } = importCwd('@cucumber/cucumber')
 const assert = require("assert");
 const asherah = require("asherah");
 const fs = require("fs");
@@ -11,11 +12,11 @@ const fileName = "node_encrypted";
 let payloadString;
 let encryptedPayloadString;
 
-cucumber.Given(/^I have "(.*)"$/, function (payload) {
+Given(/^I have "(.*)"$/, function (payload) {
     payloadString = payload;
 });
 
-cucumber.When('I encrypt the data', function () {
+When('I encrypt the data', function () {
     const config = {
         KMS: 'static',
         Metastore: 'memory',
@@ -41,7 +42,7 @@ cucumber.When('I encrypt the data', function () {
     asherah.shutdown();
 });
 
-cucumber.Then('I should get encrypted_data', function (_dataTable) {
+Then('I should get encrypted_data', function (_dataTable) {
     const tempFile = fileDirectory + fileName;
     if (fs.existsSync(tempFile)) {
         fs.unlinkSync(tempFile);
@@ -49,6 +50,6 @@ cucumber.Then('I should get encrypted_data', function (_dataTable) {
     fs.writeFileSync(tempFile, encryptedPayloadString);
 });
 
-cucumber.Then('encrypted_data should not be equal to data', function (_dataTable) {
+Then('encrypted_data should not be equal to data', function (_dataTable) {
     assert(payloadString, encryptedPayloadString);
 });
