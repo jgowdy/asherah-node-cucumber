@@ -23,7 +23,7 @@ mysql --protocol=tcp -P${TEST_DB_PORT} -u ${TEST_DB_USER} -p${TEST_DB_PASSWORD} 
           key_record     TEXT         NOT NULL,
           PRIMARY KEY (id, created),
           INDEX (created)
-        );"
+        );" 2>/dev/null
 
 ./node_modules/.bin/cucumber-js features/encrypt.feature
 
