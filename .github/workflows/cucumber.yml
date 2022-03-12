@@ -1,0 +1,21 @@
+name: Cobhan-Go
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-linux:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    container:
+      image: node
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install node packages
+      run: npm i
+    - name: Run Cucumber
+      run: ./node_modules/.bin/cucumber-js ./encrypt.feature
+      
