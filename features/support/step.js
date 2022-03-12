@@ -59,21 +59,21 @@ Then('encrypted_data should not be equal to data', async function () {
 Given('I have encrypted_data from {string}', async function (string) {
     // Write code here that turns the phrase above into concrete actions
     return 'pending';
-  });
+});
 
 When('I decrypt the encrypted_data', async function () {
     // Write code here that turns the phrase above into concrete actions
     return 'pending';
-  });
+});
 
 Then('I should get decrypted_data', async function () {
     // Write code here that turns the phrase above into concrete actions
     return 'pending';
-  });
+});
 
 Then('decrypted_data should be equal to {string}', async function (string) {
     // Write code here that turns the phrase above into concrete actions
     return 'pending';
-  });
+});
 
 
